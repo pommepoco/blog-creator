@@ -1,0 +1,7 @@
+{
+  "_comments": "Make your own config",
+  "mongoDB": {
+    "host": "127.0.0.1",
+    "dbName": "blog-creator"
+  }
+}
