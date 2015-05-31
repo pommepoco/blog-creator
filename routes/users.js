@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
-var db = require("../models/models");
+var db = require("../models");
+var policies = require("../policies");
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
