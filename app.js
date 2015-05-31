@@ -4,6 +4,10 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var expressSession = require("express-session");
+var RedisStore = require("connect-redis")(expressSession);
+
+var conf = require("./config");
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
@@ -17,12 +21,36 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
 // uncomment after placing your favicon in /public
+// TODO: Add favicon
 //app.use(favicon(__dirname + '/public/favicon.ico'));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+// Use expressSession with redis
+app.use(expressSession({
+  store: new RedisStore({
+    host: conf.redis.host || '127.0.0.1',
+    port: conf.redis.port || 6379,
+    prefix: conf.redis.prefix || 'sessions'
+  }),
+  secret: "sdjfksj•#îœÓÓÓÓÓ—Ô∏‰app•¿ËÍÎ∫∫",
+  cookie: { secure: false },
+  resave: false,
+  httpOnly: true,
+  saveUninitialized: false,
+  maxAge: conf.session.expireTime || 10000000
+}));
+
+app.use(function (req, res, next) {
+  // Check if session set
+  if (!req.session) {
+    return next(new Error('oh no, NO SESSION')); // handle error
+  }
+  next(); // otherwise continue
+});
 
 app.use('/', routes);
 app.use('/users', users);
