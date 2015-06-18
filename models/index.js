@@ -26,5 +26,6 @@ db.once('open', function callback() {
  */
 module.exports = {
   User: require('./User')(mongoose),
+  Blog: require('./Blog')(mongoose),
   objectId: mongoose.Types.ObjectId
 };

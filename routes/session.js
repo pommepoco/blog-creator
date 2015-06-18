@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var db = require("../models");
+var policies =require("../policies");
 
 /* GET Session. */
 router.get('/', function(req, res, next) {

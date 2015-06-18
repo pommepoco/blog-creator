@@ -1,10 +1,14 @@
 {
   "_comments": "Make your own config",
+  "debug": true,
   "mongoDB": {
     "host": "127.0.0.1",
     "dbName": "blog-creator"
   },
   "redis": {
+  },
+  "domain": {
+    "mainName": "localhost"
   },
   "session": {}
 }

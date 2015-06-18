@@ -6,7 +6,6 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var expressSession = require("express-session");
 var RedisStore = require("connect-redis")(expressSession);
-
 var conf = require("./config");
 
 var routes = require('./routes/index');
@@ -52,9 +51,24 @@ app.use(function (req, res, next) {
   next(); // otherwise continue
 });
 
+/*app.use(expressSubDomain("*", function(req, res, next) {
+  console.log("couccou");
+  res.send("coucouc:w");
+}));*/
+
+// Get SubDomain
+app.use(function(req, res, next) {
+  var host = req.headers.host;
+  req.subDomain =  host.split('.')[0];
+  if (req.subDomain === host) {
+    req.subDomain = false;
+  }
+  next();
+});
+
 app.use('/', routes);
 app.use('/users', users);
-app.use("/session", session);
+app.use('/session', session);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

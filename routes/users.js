@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var db = require("../models");
+var conf = require("../config");
 var policies = require("../policies");
 
 /* GET users listing. */
@@ -28,20 +29,17 @@ router.post("/", function(req, res, next) {
       req.params.password = null;
       req.params.confirm = null;
       res.json({error: err});
-      next();
       console.log(err);
     } else {
       data.password = undefined;
       req.session.user = data;
       res.json({res: true, user: data});
-      next();
     }
   });
 });
 
-router.put("/", function(req, res, next) {
+router.put("/:id", function(req, res, next) {
   res.json(req.body);
-  next();
 });
 
 
@@ -54,7 +52,6 @@ router.delete("/:id", function(req, res, next) {
     }
     else
       console.log({message: 'User removed from the Database!'});
-    next();
   });
   res.json({delete: req.param('id')});
 });

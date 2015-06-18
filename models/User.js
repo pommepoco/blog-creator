@@ -1,8 +1,8 @@
 module.exports = function(mongoose) {
     var schema = new mongoose.Schema({
             /*
-             **	USER
-             */
+            **	USER
+            */
             "username": {
                 type: String,
                 required: true,
@@ -46,31 +46,16 @@ module.exports = function(mongoose) {
                 type: Boolean,
                 default: true
             },
-            inGame: {
-                type: Boolean,
-                default: false
-            },
             "authentificated": {
                 type: Boolean,
                 default: true
             },
-            socketConnected: {
-                type: Boolean,
-                default: false
-            },
-            socketId: {
-                type: String,
-                require: false
-            },
-            gameId: {
-                type: String,
-                require: false
-            },
-            color: {
-                type: Number,
-                default: 0xccffcc
-            }
+            "blogs": [
+              {
+              type: mongoose.Schema.Types.ObjectId,
+              ref: 'Blog'
+            }]
         }
     );
-    return mongoose.model('users', schema);
+    return mongoose.model('User', schema);
 };
