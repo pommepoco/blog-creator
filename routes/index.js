@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var policies = require("../policies");
+var policies = require("../rules");
 
 /* GET home page. */
 router.get('/', function(req, res, next) {

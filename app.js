@@ -1,17 +1,18 @@
-var express = require('express');
-var path = require('path');
-var favicon = require('serve-favicon');
-var logger = require('morgan');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
-var expressSession = require("express-session");
-var RedisStore = require("connect-redis")(expressSession);
-var conf = require("./config");
+var express         = require('express');
+var path            = require('path');
+var favicon         = require('serve-favicon');
+var logger          = require('morgan');
+var cookieParser    = require('cookie-parser');
+var bodyParser      = require('body-parser');
+var expressSession  = require("express-session");
+var RedisStore      = require("connect-redis")(expressSession);
+var conf            = require("./config");
 
-var routes = require('./routes/index');
-var users = require('./routes/users');
-var session = require("./routes/session");
-
+// Routers load
+var routes  = require('./routes/index');
+var users   = require('./routes/users');
+var session = require('./routes/session');
+var blog    = require('./routes/blog');
 
 var app = express();
 
@@ -51,12 +52,8 @@ app.use(function (req, res, next) {
   next(); // otherwise continue
 });
 
-/*app.use(expressSubDomain("*", function(req, res, next) {
-  console.log("couccou");
-  res.send("coucouc:w");
-}));*/
-
 // Get SubDomain
+var request = [];
 app.use(function(req, res, next) {
   var host = req.headers.host;
   req.subDomain =  host.split('.')[0];
@@ -66,6 +63,7 @@ app.use(function(req, res, next) {
   next();
 });
 
+app.use('/', blog);
 app.use('/', routes);
 app.use('/users', users);
 app.use('/session', session);

@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var db = require("../models");
 var conf = require("../config");
-var policies = require("../policies");
+var policies = require("../rules");
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {

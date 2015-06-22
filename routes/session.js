@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var db = require("../models");
-var policies =require("../policies");
+var rules = require("../rules");
 
 /* GET Session. */
 router.get('/', function(req, res, next) {
@@ -23,6 +23,7 @@ router.post("/", function(req, res, next) {
             res.json({error: err});
             console.error(err);
         } else {
+            // result = true if password match
             var result = bcrypt.compareSync(req.body.password, user.password, function (err, result) {
                 console.error(err);
             });
@@ -37,7 +38,7 @@ router.post("/", function(req, res, next) {
                 });
                 res.json({user: req.session.user});
             } else {	// wrong password
-                res.json({error: err});
+                res.json({error: "wrong password."});
             }
         }
     });

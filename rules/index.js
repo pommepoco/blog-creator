@@ -1,8 +1,8 @@
 // Load FileSystem module
 var fs = require("fs");
 
-// Make a scandir like
-var files = fs.readdirSync("./policies");
+// scandir like
+var files = fs.readdirSync("./rules");
 
 // require all policies and put them in object
 var exportMod = {};
