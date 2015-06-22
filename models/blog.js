@@ -15,6 +15,7 @@ module.exports = function(mongoose) {
     }
   };
 
+  // TODO: not use yet, but could be great to have a global basicUserInfoSchema
   var basicUserInfoSchema = new mongoose.Schema(basicUserInfo);
 
   var comment = new mongoose.Schema({
@@ -45,7 +46,7 @@ module.exports = function(mongoose) {
         // TODO reg-ex url
         index: { unique: true }
       },
-      subDomain: { // find real var name
+      subDomain: {
         type: String,
         require: true,
         index: { unique: true }
