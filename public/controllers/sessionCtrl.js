@@ -4,15 +4,12 @@ module.controller("sessionCtrl", [
   "$http",
   "$location",
   "$rootScope",
-  function ($scope, $http, $location, $rootScope) {
+  "$q",
+  function ($scope, $http, $location, $rootScope, $q) {
     console.log("SessionCtrl");
     $scope.user = {};
-    $http.post("/users").success(function(data) {
-      $scope.users = data;
-      $rootScope.isAuth = document.cookie.auth;
-    }).error(function(data) {
-      console.log(data);
-    });
+    window.rootScope = $rootScope;
+    $rootScope.isAuth = $.cookie("auth") === "true";
 
     $scope.loginSubmit = function() {
       $http.post("/session", $scope.user)
@@ -25,10 +22,14 @@ module.controller("sessionCtrl", [
     };
 
     $scope.logout = function() {
-      console.log("il y passe");  
+      console.log("il y passe");
+      var name = null; 
+      var deferred = $q.defer();
       $http.delete("/session").success(function(data) {
         $rootScope.auth = false;
+        deferred.resolve(data);
       });
+      return deferred.promise;
     }
   }
   ]);

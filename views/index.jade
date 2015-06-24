@@ -14,5 +14,6 @@ block content
       fieldset#actions
         p.option
         a(href='/#/register') Inscription
-        a(ngIf = "isAuth" ng-click = "logout()" href="#/login") Logout
+        div(ng-if = "isAuth")
+          a( ng-click = "logout()" href="#/login") Logout
   div(ng-view)

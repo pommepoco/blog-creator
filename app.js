@@ -64,11 +64,11 @@ app.use(function(req, res, next) {
 });
 
 app.use(function(req, res, next) {
+  var auth = req.session.authentificated;
   if (req.session.authentificated ) {
-    req.cookies.auth = req.session.authentificated;
+    res.cookie("auth", req.session.authentificated);
   } else {
-      req.cookies
-      .auth = false;
+      res.cookie("auth", false);
   }  
   next();
 });
