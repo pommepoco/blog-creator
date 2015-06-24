@@ -4,7 +4,8 @@ module.controller("sessionCtrl", [
   "$http",
   "$location",
   "$rootScope",
-  function ($scope, $http, $location, $rootScope) {
+  "httpq",
+  function ($scope, $http, $location, $rootScope, httpq) {
     console.log("SessionCtrl");
     $scope.user = {};
     $http.post("/users").success(function(data) {
@@ -25,8 +26,9 @@ module.controller("sessionCtrl", [
     };
 
     $scope.logout = function() {
-      console.log("il y passe");  
-      $http.delete("/session").success(function(data) {
+      console.log("il y passe");
+      httpq.delete("/session").then(function(data) {
+        console.log(data);
         $rootScope.auth = false;
       });
     }
