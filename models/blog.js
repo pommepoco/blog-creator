@@ -7,7 +7,7 @@ module.exports = function(mongoose) {
     },
     username: {
       type: String,
-      require: true
+      required: true
     },
     role: {
       type: Number,
@@ -21,7 +21,7 @@ module.exports = function(mongoose) {
   var comment = new mongoose.Schema({
     content: {
       type: String,
-      require: true
+      required: true
     },
     author: basicUserInfo
   });
@@ -29,11 +29,11 @@ module.exports = function(mongoose) {
   var article = new mongoose.Schema({
     title: {
       type: String,
-      require: true
+      required: true
     },
     content: {
       type: String,
-      require: true
+      required: true
     },
     author: basicUserInfo,
     comments: [ comment ]
@@ -42,13 +42,13 @@ module.exports = function(mongoose) {
   var blog = new mongoose.Schema({
       name: {
         type: String,
-        require: true,
+        required: true,
         // TODO reg-ex url
         index: { unique: true }
       },
       subDomain: {
         type: String,
-        require: true,
+        required: true,
         index: { unique: true }
       },
       articles: [ article ],

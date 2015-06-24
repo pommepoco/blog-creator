@@ -6,7 +6,8 @@ var policies = require("../rules");
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-  db.User.find(req.query, function(data, err) {
+  // get all user without password field
+  db.User.find(req.query, {password: 0}, function(data, err) {
     if (err) {
       console.log(err);
       res.json(err);
