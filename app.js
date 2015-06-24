@@ -65,7 +65,7 @@ app.use(function(req, res, next) {
 
 app.use(function(req, res, next) {
   //console.log(req.cookies);
-  if (typeof req.session.user != "undefined") {
+  if (req.session.authentificated) {
     req.cookies.auth = req.session.user.auth;
   } else {
       req.cookies.auth = false;
