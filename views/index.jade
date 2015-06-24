@@ -12,7 +12,8 @@ block content
         input#password(type='password', ng-model='user.password', name='password', placeholder='Password')
         input#submit(type='submit', value='connexion')
       fieldset#actions
-        p.option
+        p.option {{ auth }}
         a(href='/#/register') Inscription
-        a(ngIf = "isAuth" ng-click = "logout()" href="#/login") Logout
+        div(ng-if = "isAuth")
+          a( ng-click = "logout()" href="#/login") Logout
   div(ng-view)
