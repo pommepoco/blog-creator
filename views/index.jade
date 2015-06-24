@@ -4,7 +4,7 @@ block content
   script(src="/angular/app.js")
   script(src="/controllers/userCtrl.js")
   script(src="/controllers/sessionCtrl.js")
-  div(ngController = "SessionCtrl")
+  div(ng-controller = "sessionCtrl")
     form#login(ng-submit='loginSubmit();')
       h1#ff-proof.ribbon Your blog
       fieldset#inputs
@@ -13,6 +13,6 @@ block content
         input#submit(type='submit', value='connexion')
       fieldset#actions
         p.option
-          a(href='http://localhost:3000/#/register') Inscription
-    a(ngClick = "logout" href="#/login") Logout
+        a(href='/#/register') Inscription
+        a(ngIf = "isAuth" ng-click = "logout()" href="#/login") Logout
   div(ng-view)
