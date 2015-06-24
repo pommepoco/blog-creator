@@ -33,9 +33,10 @@ router.post("/", function(req, res, next) {
                 req.session.user = user;
                 user.save(function (err) {	// apply authentificated to database
                     if (err) {
-                        console.error(error);
+                        console.error(err);
                     }
                 });
+                req.session.user.password = null;
                 res.json({user: req.session.user});
             } else {	// wrong password
                 res.json({error: "wrong password."});

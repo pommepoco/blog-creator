@@ -38,7 +38,7 @@ app.use(expressSession({
   }),
   secret: "sdjfksj•#îœÓÓÓÓÓ—Ô∏‰app•¿ËÍÎ∫∫",
   cookie: { secure: false },
-  resave: false,
+  resave: true,
   httpOnly: true,
   saveUninitialized: false,
   maxAge: conf.session.expireTime || 10000000
@@ -60,6 +60,16 @@ app.use(function(req, res, next) {
   if (req.subDomain === host) {
     req.subDomain = false;
   }
+  next();
+});
+
+app.use(function(req, res, next) {
+  //console.log(req.cookies);
+  if (typeof req.session.user != "undefined") {
+    req.cookies.auth = req.session.user.auth;
+  } else {
+      req.cookies.auth = false;
+  }  
   next();
 });
 
