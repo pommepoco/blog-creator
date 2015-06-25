@@ -1,0 +1,13 @@
+<div>
+    <div class="post" ng-repeat="article in blog.articles">
+    </div>
+    <form class="add-post" ng-submit="addpost()">
+        <label>Titre
+            <input type="text" ng-model="newPost.title">
+        </label>
+        <label>Contenu
+            <textarea ng-model="newPost.content"></textarea>
+        </label>
+        <input type="submit" value="ajouter">
+    </form>
+</div>

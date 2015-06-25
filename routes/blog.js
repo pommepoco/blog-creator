@@ -11,6 +11,13 @@ router.get("/", rules.isBlog, function(req, res, next) {
   });
 });
 
+router.get("/blog/current", function(req, res, next) {
+  var blog = db.Blog.findOne({subDomain: req.subDomain}, function(err, blog) {
+    if (!blog) return res.status(404).json({error: "there is blog named like that"});
+    res.json({blog: blog});
+  });
+});
+
 router.get("/blog", function(req, res, next) {
   db.Blog.find(req.body, function(err, records) {
     if (err) return res.status(500).json({error: err});
