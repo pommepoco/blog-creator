@@ -1,6 +1,8 @@
 body {
   
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: #222;
+  color: white;
 }
 
 a {
@@ -9,43 +11,11 @@ a {
 h1 {
 	display: inline-block;
 }
+h2 {
+	display: inline-block;
+	font-size: 2em;
+}
 p {
 	display: inline-block;
 	margin: 1em 14em 1em 14em;
-}
-#ff-proof {
-	width: 20%;
-	font-size: 1.5em;
-}
-#logout {
-	display: inline-block;
-	float:right;
-}
-#actions {
-	width: 20%;
-	height:100%;
-	float: right;
-	text-align: center;
-	margin-top: 3%;
-}
-#bs-example-navbar-collapse-1 {
-	background-color: #F3F3F3;
-	margin-top: 1em;
-	padding-bottom: 1em;
-}
-#inputs {
-	width: 70%;
-	margin: auto;
-}
-.bs-example {
-	width: 60%;
-}
-.bs-example {
-	margin: auto;
-}
-#register {
-	width: 30%;
-	margin: 2em auto auto auto;
-	text-align: center;
-	background-color: #F3F3F3;
 }

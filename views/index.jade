@@ -9,9 +9,10 @@ block content
       div#bs-example-navbar-collapse-1.collapse.navbar-collapse()
         fieldset#inputs
           h1#ff-proof.ribbon Your blog
-          input#username(type='text', name='log', ng-model='user.email', placeholder='mail')
-          input#password(type='password', ng-model='user.password', name='password', placeholder='Password')
-          input#submit(type='submit', value='connexion')
+          div(ng-if = "!isAuth"  )
+            input#username(type='text', name='log', ng-model='user.email', placeholder='mail')
+            input#password(type='password', ng-model='user.password', name='password', placeholder='Password')
+            input#submit(type='submit', value='connexion')
           fieldset#actions
             span.option {{ auth }}
             a(ng-if = "!isAuth" href='/#/register') Inscription

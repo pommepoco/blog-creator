@@ -1,10 +1,25 @@
-<h2>Utilisateurs</h2>
-<ul ng-repeat="user in users">
-	<li>{{ user.name }} - <span ng-if="user.authentificated">Connected</span>
-</ul>
-<h2>Blogs</h2>
-<div ng-controller="BlogsCtrl">
-	<ul ng-repeat="blog in blogs">
-		<li><a href="{{ 'http://' + blog.subDomain + '.' + host }}">{{ blog.name }}</a></li>
-	</ul>
+<div id="home-content">
+	<div  id="user-account">
+		<div>
+			<h2>Utilisateurs</h2>
+		</div>
+		<ul ng-repeat="user in users">
+			<li>{{ user.name }} - <span ng-if="user.authentificated">Connected</span></li>
+		</ul>
+	</div>
+	<div id="user-blog">
+		<div>
+			<h2>Mes blogs</h2>
+		</div>
+	</div >
+	<div id="every-blog">
+		<div>
+			<h2>actualités - blogs</h2>
+		</div>
+		<div ng-controller="BlogsCtrl">
+			<ul ng-repeat="blog in blogs">
+				<li><a href="{{ 'http://' + blog.subDomain + '.' + host }}">{{ blog.name }}</a></li>
+			</ul>
+		</div>
+	</div>
 </div>
