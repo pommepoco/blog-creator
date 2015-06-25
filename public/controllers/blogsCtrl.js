@@ -17,7 +17,6 @@ module.controller("BlogsCtrl", [
 
     // Add blog
     $scope.addBlog = function() {
-      console.log($rootScope.user);
       $scope.newBlog.managers = [$rootScope.user];
       $http.post("/blog", $scope.newBlog)
         .success(function (data) {
