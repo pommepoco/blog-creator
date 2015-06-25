@@ -18,10 +18,10 @@ block content
             #bs-example-navbar-collapse-1.collapse.navbar-collapse
               ul.nav.navbar-nav
               span(ng-if = "!isAuth")
-                form.navbar-form.navbar-left(role='search')
+                form.navbar-form.navbar-left(ng-submit="loginSubmit()" role='search')
                   .form-group
-                    input.form-control#connect-mail(type='text', placeholder='Email')
-                    input.form-control#connect-password(type='password', placeholder='Password')
+                    input.form-control#connect-mail(type='text', ng-model="user.email" placeholder='Email')
+                    input.form-control#connect-password(type='password', ng-model="user.password" placeholder='Password')
                   button.btn.btn-default(type='submit') Connection
               ul.nav.navbar-nav.navbar-right
                 li
