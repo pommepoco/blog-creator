@@ -7,15 +7,10 @@ module.controller("BlogCtrl", [
     $rootScope.host = window.location.host;
     $http.get("/blog/current")
       .success(function(data) {
-        $scope.blog = data.blog;
+        $rootScope.blog = data.blog;
       }).error(function() {
         alert("une erreur c'est produite");
       });
-
-    // Get connected user
-    $http.get("/session", function(data) {
-      $scope.user = data;
-    });
 
     // Commment CRUD
     $scope.addComment = function(article) {
@@ -34,14 +29,14 @@ module.controller("BlogCtrl", [
 
     // Article CRUD
     $scope.postDelete = function(article) {
-      _.remove($scope.blog.articles, function(n) {
+      _.remove($rootScope.blog.articles, function(n) {
         return n._id === article._id;
       });
       putBlog();
     };
 
     $scope.addPost = function() {
-      $scope.blog.articles.push($scope.newPost);
+      $rootScope.blog.articles.push($scope.newPost);
       putBlog();
     };
 

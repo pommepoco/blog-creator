@@ -24,8 +24,10 @@ block content
                     input.form-control(type='password', ng-model="loginUser.password" placeholder='Password')
                   button.btn.btn-default(type='submit') Connection
               ul.nav.navbar-nav.navbar-right
-                li
-                  a(ng-if = "!isAuth" href='/#/register') Inscription
-                li.dropdown
-                  a.dropdown-toggle(ng-if = "isAuth" ng-click = "logout()" href="#/") Logout
+                li(ng-if = "user.username")
+                  a {{ user.username }}
+                li(ng-if = "!isAuth")
+                  a(href='/#/register') Inscription
+                li(ng-if = "isAuth")
+                  a.dropdown-toggle( ng-click = "logout()" href="#/") Logout
   div(ng-view)
