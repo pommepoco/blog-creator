@@ -9,6 +9,10 @@ a {
 h1 {
 	display: inline-block;
 }
+p {
+	display: inline-block;
+	margin: 1em 14em 1em 14em;
+}
 #ff-proof {
 	width: 20%;
 	font-size: 1.5em;
@@ -38,4 +42,10 @@ h1 {
 }
 .bs-example {
 	margin: auto;
+}
+#register {
+	width: 30%;
+	margin: 2em auto auto auto;
+	text-align: center;
+	background-color: #F3F3F3;
 }
