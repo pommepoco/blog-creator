@@ -5,18 +5,27 @@ block content
   script(src="/controllers/userCtrl.js")
   script(src="/controllers/sessionCtrl.js")
   script(src="/controllers/blogsCtrl.js")
-  div.bs-example(ng-controller = "sessionCtrl")
-    form#login(ng-submit='loginSubmit();')
-      div#bs-example-navbar-collapse-1.collapse.navbar-collapse()
-        fieldset#inputs
-          h1#ff-proof.ribbon Your blog
-          div(ng-if = "!isAuth"  )
-            input#username(type='text', name='log', ng-model='user.email', placeholder='mail')
-            input#password(type='password', ng-model='user.password', name='password', placeholder='Password')
-            input#submit(type='submit', value='connexion')
-          fieldset#actions
-            span.option {{ auth }}
-            a(ng-if = "!isAuth" href='/#/register') Inscription
-            div#logout(ng-if = "isAuth")
-              a( ng-click = "logout()" href="#/login") Logout
+
+
+  div(ng-controller = "sessionCtrl")
+    nav.navbar.navbar-default
+          .container-fluid
+            // Brand and toggle get grouped for better mobile display
+            .navbar-header
+              button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#bs-example-navbar-collapse-1', aria-expanded='false')
+              a.navbar-brand(href='/#/') Home
+            // Collect the nav links, forms, and other content for toggling
+            #bs-example-navbar-collapse-1.collapse.navbar-collapse
+              ul.nav.navbar-nav
+              span(ng-if = "!isAuth")
+                form.navbar-form.navbar-left(role='search')
+                  .form-group
+                    input.form-control#connect-mail(type='text', placeholder='Email')
+                    input.form-control#connect-password(type='password', placeholder='Password')
+                  button.btn.btn-default(type='submit') Connection
+              ul.nav.navbar-nav.navbar-right
+                li
+                  a(ng-if = "!isAuth" href='/#/register') Inscription
+                li.dropdown
+                  a.dropdown-toggle(ng-if = "isAuth" ng-click = "logout()" href="#/login") Logout
   div(ng-view)
