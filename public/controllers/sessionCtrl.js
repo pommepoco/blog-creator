@@ -11,6 +11,14 @@ module.controller("sessionCtrl", [
     window.rootScope = $rootScope;
     $rootScope.isAuth = $.cookie("auth") === "true";
 
+    // get the connected user
+    $http.get("/session")
+      .success(function(data) {
+        $rootScope.user = data;
+      }).error(function(data) {
+        alert("Une erreur est survenu");
+      });
+
     $scope.loginSubmit = function() {
       $http.post("/session", $scope.user)
       .success(function(data) {

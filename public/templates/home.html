@@ -23,4 +23,14 @@
 		</div>
 	</div>
 </div>
+<form ng-submit="addBlog()" ng-controller="BlogsCtrl" >
+	<h2>Creer un blog</h2>
+	<label>Nom du blog
+		<input style="color: black" type="text" ng-model="newBlog.name" >
+	</label>
+	<label>Url du blog
+		<span>http://</span><input style="color: black" type="text" ng-model="newBlog.subDomain"><span>.{{ host }}</span>
+	</label>
+	<input type="submit" value="Ajouter un blog">
+</form>
 
