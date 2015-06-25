@@ -2,8 +2,12 @@
 <ul ng-repeat="user in users">
 	<li>{{ user.name }} - <span ng-if="user.authentificated">Connected</span>
 </ul>
-<h2>Blogs</h2>
 <div ng-controller="BlogsCtrl">
+	<h2>Mes blog</h2>
+	<ul ng-repeat="myBlog in Blog">
+		<li><a href="{{ 'http://' + blog.subDomain + '.' + host }}">{{ blog.name }}</a></li>
+	</ul>
+	<h2>Blogs</h2>
 	<ul ng-repeat="blog in blogs">
 		<li><a href="{{ 'http://' + blog.subDomain + '.' + host }}">{{ blog.name }}</a></li>
 	</ul>

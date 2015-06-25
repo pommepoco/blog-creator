@@ -1,7 +1,18 @@
 <div>
-    <div class="post" ng-repeat="article in blog.articles">
+    <div class="post" ng-repeat="(articleKey, article) in blog.articles | reverse">
+        <h3>{{ article.title }}</h3>
+        <p>{{ article.content }}</p>
+        <ul ng-repeat="comment in articles.comments">
+            <li>{{ comment.content }} <span>{{ comment.author.username }}</span></li>
+        </ul>
+        <span ng-click="postDelete(article)">delete</span>
+        <form ng-submit="addCommment(article)" >
+            <label>Ajouter un commentaire:
+                <input type="text" ng-model="article.newComment">
+            </label>
+        </form>
     </div>
-    <form class="add-post" ng-submit="addpost()">
+    <form class="add-post" ng-submit="addPost()">
         <label>Titre
             <input type="text" ng-model="newPost.title">
         </label>
