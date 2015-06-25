@@ -7,7 +7,7 @@ module.controller("sessionCtrl", [
   "$q",
   function ($scope, $http, $location, $rootScope, $q) {
     console.log("SessionCtrl");
-    $scope.user = {};
+    $rootScope.user = {};
     window.rootScope = $rootScope;
     $rootScope.isAuth = $.cookie("auth") === "true";
 
@@ -16,7 +16,7 @@ module.controller("sessionCtrl", [
       .success(function(data) {
         $rootScope.isAuth = true;
         console.log(data);
-        $scope.user = {};
+        $rootScope.user = {};
         $location.path("/");
       })
       .error(function(data) {
@@ -25,7 +25,6 @@ module.controller("sessionCtrl", [
     };
 
     $scope.logout = function() {
-      var defered = $q.defer();
       $http.get("/session")
         .success(function() {
           $rootScope.isAuth = false;

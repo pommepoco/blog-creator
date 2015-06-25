@@ -43,7 +43,8 @@ router.post("/blog", function(req, res, next) {
 router.put("/blog/:id", function(req, res, next) {
   db.Blog.update({_id: new db.ObjectId(req.params.id)}, req.body, function(err, record) {
     if (err) return res.status(500).json({error: err});
-    res.json(record);
+    console.log({blog: record});
+    res.json({blog: record});
   });
 });
 

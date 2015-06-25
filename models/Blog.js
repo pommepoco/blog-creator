@@ -43,7 +43,6 @@ module.exports = function(mongoose) {
       name: {
         type: String,
         required: true,
-        // TODO reg-ex url
         index: { unique: true }
       },
       subDomain: {
