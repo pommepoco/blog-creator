@@ -20,14 +20,14 @@ router.get("/blog/current", function(req, res, next) {
 
 router.get("/blog", function(req, res, next) {
   db.Blog.find(req.body, function(err, records) {
-    if (err) return res.status(500).json({error: err});
+    if (err) return res.status(409).json({error: err});
     res.json({blogs: records});
   });
 });
 
 router.get("/blog/:id", function(req, res, next) {
   db.Blog.findOne({_id: new db.ObjectId(req.params.id)}, function(err, record) {
-    if (err) return res.status(500).json({error: err});
+    if (err) return res.status(409).json({error: err});
     res.json(record);
   });
 });
@@ -35,14 +35,14 @@ router.get("/blog/:id", function(req, res, next) {
 router.post("/blog", function(req, res, next) {
   var blog = db.Blog(req.body);
   blog.save(function(err, record) {
-    if (err) return res.status(500).json({error: err});
+    if (err) return res.status(409).json({error: err});
     res.json(record);
   });
 });
 
 router.put("/blog/:id", function(req, res, next) {
   db.Blog.update({_id: new db.ObjectId(req.params.id)}, req.body, function(err, record) {
-    if (err) return res.status(500).json({error: err});
+    if (err) return res.status(409).json({error: err});
     console.log({blog: record});
     res.json({blog: record});
   });
@@ -50,7 +50,7 @@ router.put("/blog/:id", function(req, res, next) {
 
 router.delete("/blog/:id", function(req, res, next) {
   db.Blog.remove({_id: new db.ObjectId(req.params.id)}, function(err, del) {
-    if (err) return res.status(500).json({error: err});
+    if (err) return res.status(409).json({error: err});
     res.json(del);
   });
 });

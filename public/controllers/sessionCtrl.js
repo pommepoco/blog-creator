@@ -14,7 +14,7 @@ module.controller("sessionCtrl", [
     // get the connected user
     $http.get("/session")
       .success(function(data) {
-        $rootScope.user = data;
+        $rootScope.user = data.user;
       }).error(function(data) {
         alert("Une erreur est survenu");
       });
@@ -23,7 +23,6 @@ module.controller("sessionCtrl", [
       $http.post("/session", $scope.user)
       .success(function(data) {
         $rootScope.isAuth = true;
-        console.log(data);
         $rootScope.user = {};
         $location.path("/");
       })
@@ -33,7 +32,7 @@ module.controller("sessionCtrl", [
     };
 
     $scope.logout = function() {
-      $http.get("/session")
+      $http.delete("/session")
         .success(function() {
           $rootScope.isAuth = false;
         });
