@@ -5,6 +5,9 @@ body {
   color: white;
 }
 
+form {
+	text-align: center;
+}
 a {
   color: #00B7FF;
 }
@@ -17,5 +20,14 @@ h2 {
 }
 p {
 	display: inline-block;
-	margin: 1em 14em 1em 14em;
+	margin: 1em 24em 1em 24em;
+}
+p button {
+	color:black;
+}
+.navbar-form input{
+	margin-right: 2em;
+}
+.col-lg-6 {
+	margin-left: 32em;
 }
