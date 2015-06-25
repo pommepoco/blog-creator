@@ -12,7 +12,7 @@
             </label>
         </form>
     </div>
-    <form class="add-post" ng-submit="addPost()">
+    <form ng-if="isAuth" class="add-post" ng-submit="addPost()">
         <label>Titre
             <input type="text" ng-model="newPost.title">
         </label>

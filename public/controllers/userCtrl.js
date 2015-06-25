@@ -3,7 +3,8 @@ module.controller("UserCtrl", [
   "$scope",
   "$http",
   "$location",
-  function ($scope, $http, $location) {
+	"$rootScope",
+  function ($scope, $http, $location, $rootScope) {
     console.log("userCtrl");
   	$http.get("/users")
 			.success(function(data) {
@@ -11,6 +12,8 @@ module.controller("UserCtrl", [
 			}).error(function(data) {
 				console.log(data);
 			});
+
+		console.log($rootScope.isAuth);
 
 		$scope.inscriptionSubmit = function() {
   		$http.post("/users", $scope.user)

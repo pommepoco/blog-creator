@@ -67,6 +67,10 @@ app.use(function(req, res, next) {
   var auth = req.session.authentificated;
   if (req.session.authentificated ) {
     res.cookie("auth", req.session.authentificated);
+    res.cookie("user._id", req.session.user._id);
+    res.cookie("user.username", req.session.user.username);
+    res.cookie("user.name", req.session.user.name);
+    res.cookie("user.email", req.session.user.email);
   } else {
       res.cookie("auth", false);
   }  

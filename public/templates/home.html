@@ -23,7 +23,7 @@
 		</div>
 	</div>
 </div>
-<form ng-submit="addBlog()" ng-controller="BlogsCtrl" >
+<form ng-if="isAuth" ng-submit="addBlog()" ng-controller="BlogsCtrl" >
 	<h2>Creer un blog</h2>
 	<label>Nom du blog
 		<input style="color: black" type="text" ng-model="newBlog.name" >
