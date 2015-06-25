@@ -35,7 +35,7 @@ module.controller("BlogsCtrl", [
           .success(function(data) {
             $scope.blogs = data.blogs;
           }).error(function() {
-            alert("une erreur c'est produite");
+            alert("une erreur est survenu");
           });
       }).error(function(data) {
         console.log(data);
