@@ -1,4 +1,8 @@
 extends ../layout
 
 block content
-  h1 coucou
+  script(src="/angular/appBlog.js")
+  script(src="/controllers/userCtrl.js")
+  script(src="/controllers/sessionCtrl.js")
+  script(src="/controllers/blog/blogCtrl.js")
+  div(ng-view)
