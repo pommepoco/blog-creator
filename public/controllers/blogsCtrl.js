@@ -17,11 +17,13 @@ module.controller("BlogsCtrl", [
       });
 
     // Add blog
-    $http.post("/blog", $scope.newBlog)
-      .success(function(data) {
-        console.log(data);
-      }).error(function(data) {
-        alert("Une erreur est survenu");
-      });
-  }
+    $scope.addBlog = function() {
+      $http.post("/blog", $scope.newBlog)
+        .success(function (data) {
+          console.log(data);
+        }).error(function (data) {
+          alert("Une erreur est survenu");
+        });
+      }
+    }
 ]);
