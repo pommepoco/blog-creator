@@ -4,6 +4,7 @@ block content
   script(src="/angular/app.js")
   script(src="/controllers/userCtrl.js")
   script(src="/controllers/sessionCtrl.js")
+  script(src="/controllers/blogsCtrl.js")
   div(ng-controller = "sessionCtrl")
     form#login(ng-submit='loginSubmit();')
       h1#ff-proof.ribbon Your blog
@@ -15,5 +16,5 @@ block content
         p.option {{ auth }}
         a(href='/#/register') Inscription
         div(ng-if = "isAuth")
-          a( ng-click = "logout()" href="#/login") Logout
+          a( ng-click = "logout()" href="#/") Logout
   div(ng-view)
