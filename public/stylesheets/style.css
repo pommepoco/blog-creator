@@ -31,3 +31,6 @@ p button {
 .col-lg-6 {
 	margin-left: 32em;
 }
+.jumbotron h2 {
+	margin: 0em auto 3em auto;
+}

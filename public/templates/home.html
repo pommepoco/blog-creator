@@ -4,9 +4,7 @@
 		<div id="home-content" class="bs-component">
 			<div class="jumbotron">
 				<div  id="user-account">
-					<div>
-						<h2>Utilisateurs</h2>
-					</div>
+					<h2>Utilisateurs</h2>
 					<ul ng-repeat="user in users">
 						<li>{{ user.name }} - <span ng-if="user.authentificated">Connected</span></li>
 					</ul>
