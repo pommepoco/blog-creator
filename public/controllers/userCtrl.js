@@ -5,25 +5,21 @@ module.controller("UserCtrl", [
   "$location",
   function ($scope, $http, $location) {
     console.log("userCtrl");
-    $scope.user = {};
-  	$scope.inscriptionSubmit = function() {
-  		$http.post("/users", $scope.user)
-	  		.success(function(data) {
-	  			console.log(data);
-	  		})
-	  		.error(function(data) {
-	  			console.log(data);
-	  		});
-  	};
-
-		$scope.test = function() {
-			$http.get("/session").success(function(data) {
+  	$http.get("/users")
+			.success(function(data) {
+				$scope.users = data.users;
+			}).error(function(data) {
 				console.log(data);
-				$scope.user = data.user;
-				//$scope.$digest();
 			});
 
-		};
-  	
+		$scope.inscriptionSubmit = function() {
+  		$http.post("/users", $scope.user)
+	  		.success(function(data) {
+					//$scope.users = data.users;
+	  		})
+	  		.error(function(data) {
+	  			alert("Une erreur c'est produite.");
+	  		});
+  	};
   }
 ]);

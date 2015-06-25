@@ -14,7 +14,10 @@ module.controller("sessionCtrl", [
     $scope.loginSubmit = function() {
       $http.post("/session", $scope.user)
       .success(function(data) {
+        $rootScope.isAuth = true;
         console.log(data);
+        $scope.user = {};
+        $location.path("/");
       })
       .error(function(data) {
         console.log(data);

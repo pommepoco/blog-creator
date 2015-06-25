@@ -1,4 +1,10 @@
-<h1>home.html</h1>
-<div ng-repeat="user in users">
-	{{ user.name }}
+<h2>Utilisateurs</h2>
+<ul ng-repeat="user in users">
+	<li>{{ user.name }} - <span ng-if="user.authentificated">Connected</span>
+</ul>
+<h2>Blogs</h2>
+<div ng-controller="BlogsCtrl">
+	<ul ng-repeat="blog in blogs">
+		<li>{{ blog.name }}</li>
+	</ul>
 </div>

@@ -14,7 +14,7 @@ router.get("/", rules.isBlog, function(req, res, next) {
 router.get("/blog", function(req, res, next) {
   db.Blog.find(req.body, function(err, records) {
     if (err) return res.status(500).json({error: err});
-    res.json(records);
+    res.json({blogs: records});
   });
 });
 

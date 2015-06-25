@@ -30,22 +30,3 @@ module.config(['$routeProvider',
         redirectTo: '/'
       });
   }]);
-
-module.factory('httpq', function($http, $q) {
-  return {
-    get: function() {
-      var deferred = $q.defer();
-      $http.get.apply(null, arguments)
-        .success(deferred.resolve)
-        .error(deferred.resolve);
-      return deferred.promise;
-    },
-    delete: function() {
-      var deferred = $q.defer();
-      $http.delete.apply(null, arguments)
-        .success(deferred.resolve)
-        .error(deferred.resolve);
-      return deferred.promise;
-    }
-  }
-});
