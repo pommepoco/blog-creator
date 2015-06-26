@@ -33,7 +33,8 @@ module.controller("BlogCtrl", [
 
     $rootScope.isAdmin = function() {
       if (!$rootScope.user || !$rootScope.user._id ) return false;
-      console.log("isAdmin", _.find($rootScope.blog.managers, {id: $rootScope.user._id}), {id: $rootScope.user._id}, $rootScope.blog.managers)
+      console.log("isAdmin", _.find($rootScope.blog.managers, {id: $rootScope.user.id}), {id: $rootScope.user.id}, $rootScope.blog.managers)
+      return true;
     };
 
     $scope.deleteComment = function(article, comment) {

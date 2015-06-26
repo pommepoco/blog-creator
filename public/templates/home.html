@@ -22,7 +22,7 @@
 								<a href="{{ 'http://' + myBlog.subDomain + '.' + host }}">{{ myBlog.name }}</a>
 								<span ng-repeat="manager in myBlog.managers">
 									{{  manager.username !== user.username ? " - " + manager.username : ""}} 
-									<span ng-click = "deleteBlog(myBlog._id)" id="suppr"><a href="#">Supprimer</a></span>
+									<span ng-click = "deleteBlog(myBlog._id)" id="suppr"><a>Supprimer</a></span>
 								</span>
 							</li>
 						</ul>

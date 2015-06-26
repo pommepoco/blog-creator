@@ -12,7 +12,7 @@
             </label>
         </form>
     </div>
-    <div class="col-lg-2">
+    <div class="col-lg-2" ng-if="isAdmin()">
         <div id="home-content" class="bs-component">
             <div class="jumbotron">
                 <form ng-if="isAuth" class="add-post" ng-submit="addPost()">
