@@ -32,9 +32,8 @@ module.controller("BlogCtrl", [
     };
 
     $rootScope.isAdmin = function() {
-      if (!$rootScope.user || !$rootScope.user._id ) return false;
-      console.log("isAdmin", _.find($rootScope.blog.managers, {id: $rootScope.user.id}), {id: $rootScope.user.id}, $rootScope.blog.managers)
-      return true;
+      if (!$rootScope.user || !$rootScope.user.id || !$rootScope.blog) return false;
+      return _.find($rootScope.blog.managers, {id: $rootScope.user.id})? true : false;
     };
 
     $scope.deleteComment = function(article, comment) {
@@ -55,7 +54,7 @@ module.controller("BlogCtrl", [
     $scope.addPost = function() {
       $scope.newPost.author = $rootScope.user;
       $rootScope.blog.articles.push($scope.newPost);
-      console.log($rootScope.blog);
+      $scope.newPost = {};
       putBlog();
     };
 
