@@ -2,11 +2,11 @@
     <div class="post" ng-repeat="(articleKey, article) in blog.articles | reverse">
         <h3>{{ article.title }}</h3>
         <p>{{ article.content }}</p>
-        <ul ng-repeat="comment in articles.comments">
+        <ul ng-repeat="comment in article.comments">
             <li>{{ comment.content }} <span>{{ comment.author.username }}</span></li>
         </ul>
         <span ng-click="postDelete(article)">delete</span>
-        <form ng-submit="addCommment(article)" >
+        <form ng-submit="addComment(article)" >
             <label>Ajouter un commentaire:
                 <input type="text" ng-model="article.newComment">
             </label>
@@ -14,10 +14,10 @@
     </div>
     <form ng-if="isAuth" class="add-post" ng-submit="addPost()">
         <label>Titre
-            <input type="text" ng-model="newPost.title">
+            <input ng-init="newPost.title = ''" type="text" ng-model="newPost.title">
         </label>
         <label>Contenu
-            <textarea ng-model="newPost.content"></textarea>
+            <textarea ng-init="newPost.content = ''" ng-model="newPost.content"></textarea>
         </label>
         <input type="submit" value="ajouter">
     </form>

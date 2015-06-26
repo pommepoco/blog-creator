@@ -32,7 +32,7 @@ module.controller("BlogsCtrl", [
               && $rootScope.user
               && $rootScope.user.username
               && manager.username === $rootScope.user.username)
-              myblogs.push(manager);
+              myblogs.push(blog);
           });
         }
       });

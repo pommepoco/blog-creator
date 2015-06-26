@@ -20,7 +20,7 @@
 						<ul ng-repeat="myBlog in getMyBlogs()">
 							<li>
 								<a href="{{ 'http://' + myBlog.subDomain + '.' + host }}">{{ myBlog.name }}</a>
-								<span ng-repeat="manager in myBlog.managers">{{ " - " + manager.username !== user.username ? manager.username : ""}} </span>
+								<span ng-repeat="manager in myBlog.managers">{{  manager.username !== user.username ? " - " + manager.username : ""}} </span>
 							</li>
 						</ul>
 					</div >
