@@ -1,8 +1,8 @@
 <div>
-    <div class="col-lg-2" ng-if="isAdmin()">
+    <div class="col-lg-2" ">
         <div id="home-content" class="bs-component">
             <div class="jumbotron">
-                <form ng-if="isAdmin()" class="add-post" ng-submit="addPost()">
+                <form " class="add-post" ng-submit="addPost()">
                     <label>Titre
                         <input class="form-control" type="text" ng-model="newPost.title">
                     </label>
@@ -18,12 +18,17 @@
         <div id="home-content" class="bs-component">
             <div class="jumbotron">
                 <div class="post" ng-repeat="(articleKey, article) in blog.articles | reverse">
-                    <h3>{{ article.title }}<span> écrit par {{ article.author.username }}</span></h3>
-                    <p>{{ article.content }}</p>
+                    <span class="btn btn-primary" ng-click="postDelete(article)">Supprimer cette article</span>
+                    <h3>{{ article.title }}</h3><br>
+                    <div id="content-article">
+                        <p>{{ article.content }}</p>
+                    </div><br>
+                    <span id="writh-by"> écrit par {{ article.author.username }}</span><br>
+                    <h3>Commentaires</h3>
                     <ul ng-repeat="comment in article.comments">
-                        <li>{{ comment.content }} <br><span>{{ comment.author.username }}</span></li>
+                        <li><span class="name">{{ comment.author.username }}</span>:<span class="com-content">{{ comment.content }} </span><br><span class="suppr-com" ng-click="deleteComment(article,comment)">supprimer ce com</span></li>
+                        -----------------------
                     </ul>
-                    <span ng-if="isAdmin()" ng-click="postDelete(article)">delete</span>
                     <form ng-submit="addComment(article)" >
                         <label>Ajouter un commentaire:
                             <input type="text" ng-model="article.newComment">

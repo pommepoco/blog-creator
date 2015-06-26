@@ -39,10 +39,37 @@ p {
 p button {
 	color:black;
 }
+.suppr-com {
+	cursor: pointer;
+	color:#C62525;
+}
+.com-content {
+	margin-left: 1em;
+}
+.name {
+	display: inline-block;
+	color:#5C9ADB;
+}
 #suppr {
 	display: inline-block;
 	margin-left: 2em;
 	cursor: pointer;
+}
+#content-article {
+	width: 70%;
+	margin:auto;
+	background-color: #545252;
+	padding:1em;
+	border-radius: 5px;
+}
+#writh-by {
+	display: block;
+}
+#content-article p {
+	display: inline-block;
+	margin:0;
+	width: 100%;
+	word-wrap: break-word;
 }
 .navbar-form input{
 	margin-right: 2em;
