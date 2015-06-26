@@ -21,6 +21,11 @@ module.controller("BlogCtrl", [
         })
     };
 
+    $rootScope.isAdmin = function() {
+      if (!$rootScope.user || !$rootScope.user.id || !$rootScope.blog) return false;
+      return _.find($rootScope.blog.managers, {id: $rootScope.user.id})? true : false;
+    };
+
     // Commment CRUD
     $scope.addComment = function(article) {
       console.log(article);
@@ -29,11 +34,6 @@ module.controller("BlogCtrl", [
         author: $rootScope.user
       });
       putBlog();
-    };
-
-    $rootScope.isAdmin = function() {
-      if (!$rootScope.user || !$rootScope.user.id || !$rootScope.blog) return false;
-      return _.find($rootScope.blog.managers, {id: $rootScope.user.id})? true : false;
     };
 
     $scope.deleteComment = function(article, comment) {
