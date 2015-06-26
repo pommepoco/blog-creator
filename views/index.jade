@@ -20,8 +20,8 @@ block content
               span(ng-if = "!isAuth")
                 form.navbar-form.navbar-left(ng-submit="loginSubmit()" role='search')
                   .form-group
-                    input.form-control(type='text', ng-model="loginUser.email" placeholder='Email')
-                    input.form-control(type='password', ng-model="loginUser.password" placeholder='Password')
+                    input.form-control(type='text' ng-init="loginUser.email = ''" ng-model="loginUser.email" placeholder='Email')
+                    input.form-control(type='password' ng-init="loginUser.password = ''" ng-model="loginUser.password" placeholder='Password')
                   button.btn.btn-default(type='submit') Connection
               ul.nav.navbar-nav.navbar-right
                 li(ng-if = "user.username")

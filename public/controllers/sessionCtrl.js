@@ -9,15 +9,8 @@ module.controller("sessionCtrl", [
     console.log("SessionCtrl");
     window.rootScope = $rootScope;
     $rootScope.isAuth = $.cookie("auth") === "true";
+    $rootScope.user = {};
     $scope.loginUser = {};
-
-    // get the connected user
-    $http.get("/session")
-      .success(function(data) {
-        $rootScope.user = data.user;
-      }).error(function(data) {
-        alert("Une erreur est survenu");
-      });
 
     $scope.loginSubmit = function() {
       console.log($scope.loginUser);
@@ -34,7 +27,8 @@ module.controller("sessionCtrl", [
 
     $scope.logout = function() {
       $http.delete("/session")
-        .success(function() {
+        .success(function(data) {
+          console.log("del session", data);
           $rootScope.isAuth = false;
         });
     };
@@ -43,10 +37,17 @@ module.controller("sessionCtrl", [
       $http.get("/session")
         .success(function(data) {
           console.log(data);
-
+          $rootScope.user = data.user === null ? {} : data.user;
+          if ($location.path() === "/register")
+            $location.path("/");
+          $rootScope.isAuth = data.authentificated !== undefined ? data.authentificated : false;
+          console.log(data, $rootScope.isAuth);
         }).error(function() {
           alert("Une erreur est survenue");
         });
     }
+
+    // get the connected user
+    $rootScope.getSession();
   }
   ]);

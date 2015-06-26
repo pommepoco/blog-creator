@@ -16,9 +16,10 @@ module.controller("UserCtrl", [
 		console.log($rootScope.isAuth);
 
 		$scope.inscriptionSubmit = function() {
-  		$http.post("/users", $scope.user)
+  		$http.post("/users", $scope.newUser)
 	  		.success(function(data) {
-					//$scope.users = data.users;
+					$rootScope.getSession();
+					$location.path("/");
 	  		})
 	  		.error(function(data) {
 	  			alert("Une erreur c'est produite.");

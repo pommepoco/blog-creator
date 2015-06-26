@@ -1,56 +1,60 @@
-
-<div id="home-content" class="bs-component">
-	<div class="col-lg-3">
-		<div id="home-content" class="bs-component">
-			<div class="jumbotron">
-				<div  id="user-account">
-					<h2>Utilisateurs</h2>
-					<ul ng-repeat="user in users">
-						<li>{{ user.name }} - <span ng-if="user.authentificated">Connected</span></li>
-					</ul>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="col-lg-3">
-		<div id="home-content" class="bs-component">
-			<div class="jumbotron">
-				<div id="user-blog">
-					<h2>Mes blogs</h2>
-				</div >
-			</div>
-		</div>
-	</div>
-	<div class="col-lg-3">
-		<div id="home-content" class="bs-component">
-			<div class="jumbotron">
-				<div id="every-blog">
-					<div>
-						<h2>actualités - blogs</h2>
-					</div>
-					<div ng-controller="BlogsCtrl">
-						<ul ng-repeat="blog in blogs">
-							<li><a href="{{ 'http://' + blog.subDomain + '.' + host }}">{{ blog.name }}</a></li>
+<div ng-controller="BlogsCtrl">
+	<div id="home-content" class="bs-component">
+		<div class="col-lg-3">
+			<div id="home-content" class="bs-component">
+				<div class="jumbotron">
+					<div  id="user-account">
+						<h2>Utilisateurs</h2>
+						<ul ng-repeat="user in users">
+							<li>{{ user.name }} - <span ng-if="user.authentificated">Connected</span></li>
 						</ul>
 					</div>
 				</div>
 			</div>
 		</div>
+		<div class="col-lg-3">
+			<div id="home-content" class="bs-component">
+				<div class="jumbotron">
+					<div id="user-blog">
+						<h2>Mes blogs</h2>
+						<ul ng-repeat="myBlog in getMyBlogs()">
+							<li><a href="{{ 'http://' + myBlog.subDomain + '.' + host }}">{{ myBlog.name }}</a><span ng-repeat="manager in blog.managers"> - {{ manager.username }} </span></li>
+						</ul>
+					</div >
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-3">
+			<div id="home-content" class="bs-component">
+				<div class="jumbotron">
+					<div id="every-blog">
+						<div>
+							<h2>actualités - blogs</h2>
+						</div>
+						<div>
+							<ul ng-repeat="blog in blogs">
+								<li><a href="{{ 'http://' + blog.subDomain + '.' + host }}">{{ blog.name }}</a><span ng-repeat="manager in blog.managers"> - {{ manager.username }} </span></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
-</div>
-<div ng-if="isAuth" class="col-lg-3">
-	<div id="home-content" class="bs-component">
-		<div class="jumbotron">
-			<form ng-submit="addBlog()" ng-controller="BlogsCtrl" >
-				<h2>Creer un blog</h2>
-				<label>Nom du blog
-					<input type="text" ng-model="newBlog.name" >
-				</label>
-				<label>Url du blog
-					<span>http://</span><input  type="text" ng-model="newBlog.subDomain"><span>.{{ host }}</span>
-				</label>
-				<input type="submit" value="Ajouter un blog">
-			</form>
+	<div ng-if="isAuth" class="col-lg-3">
+		<div id="home-content" class="bs-component">
+			<div class="jumbotron">
+				<form ng-submit="addBlog()" >
+					<h2>Creer un blog</h2>
+					<label>Nom du blog
+						<input type="text" ng-init="newBlog.name = ''" ng-model="newBlog.name" required>
+					</label>
+				    <label>Url du blog
+						<span>http://</span><input type="text" ng-init="newBlog.subDomain = ''" ng-keyup="subdomainValid()" ng-model="newBlog.subDomain" required ><span>.{{ host }}</span>
+					</label>
+					<input type="submit" value="Ajouter un blog">
+				</form>
+			</div>
 		</div>
 	</div>
 </div>

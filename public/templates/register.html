@@ -3,41 +3,41 @@
         <form id="send" ng-submit="inscriptionSubmit();">
             <p>
                 <label for="username">username</label>
-                <input id="username" ng-model="user.username" type="text" name="log" value=""  pattern="^[A-Za-z0-9_]{1,15}$" />
+                <input id="username" ng-model="newUser.username" type="text" name="log" value=""  pattern="^[A-Za-z0-9_]{1,15}$" />
             </p>
             <p>
                 <label for="name">name</label>
-                <input id="name" type="text" ng-model="user.name" name="log" value=""  pattern="^[A-Za-z0-9_]{1,15}$" />
+                <input id="name" type="text" ng-model="newUser.name" name="log" value=""  pattern="^[A-Za-z0-9_]{1,15}$" />
             </p>
             <p>
                 <label for="firstname">firstname</label>
-                <input id="firstname" type="text" name="log" ng-model="user.firstname" value=""  pattern="^[A-Za-z0-9_]{1,15}$" />
+                <input id="firstname" type="text" name="log" ng-model="newUser.firstname" value=""  pattern="^[A-Za-z0-9_]{1,15}$" />
             </p>
             <p>
                 <label for="street">street</label>
-                <input id="street" type="text" name="log" ng-model="user.address.street"value=""  pattern="^[A-Za-z0-9_]{1,15}$" />
+                <input id="street" type="text" name="log" ng-model="newUser.address.street"value=""  pattern="^[A-Za-z0-9_]{1,15}$" />
             </p>
             <p>
                 <label for="town">town</label>
-                <input id="town" type="text" name="log" value=""  ng-model="user.address.town" pattern="^[A-Za-z0-9_]{1,15}$" />
+                <input id="town" type="text" name="log" value=""  ng-model="newUser.address.town" pattern="^[A-Za-z0-9_]{1,15}$" />
             </p>
             <p>
                 <label for="country">country</label>
-                <input id="country" type="text" name="log" value=""  ng-model="user.address.country" pattern="^[A-Za-z0-9_]{1,15}$" />
+                <input id="country" type="text" name="log" value=""  ng-model="newUser.address.country" pattern="^[A-Za-z0-9_]{1,15}$" />
             </p>
             <p>
                 <label for="mail">Email </label>
-                <input id="mail" type="email" name="mail" ng-model="user.email" />
+                <input id="mail" type="email" name="mail" ng-model="newUser.email" />
             </p>
 
             <p>
                 <label for="password">Password </label>
-                <input id="password" type="password" name="password" ng-model="user.password" pattern="^[A-Za-z0-9_]{1,15}$" placeholder="password">
+                <input id="password" type="password" name="password" ng-model="newUser.password" pattern="^[A-Za-z0-9_]{1,15}$" placeholder="password">
             </p>
 
             <p>
                 <label for="conf">Confirmez votre password </label>
-                <input id="conf" type="password" ng-model="user.confirm" name="conf_pass" />
+                <input id="conf" type="password" ng-model="newUser.confirm" name="conf_pass" />
             </p>
             <p>
                 <button id="submit"  type="submit">Envoyer!</button>

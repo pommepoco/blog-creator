@@ -33,6 +33,7 @@ router.post("/", function(req, res, next) {
       console.log(err);
     } else {
       data.password = undefined;
+      req.session.authentificated = true;
       req.session.user = data;
       res.json({res: true, user: data});
     }
