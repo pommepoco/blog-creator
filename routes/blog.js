@@ -41,7 +41,9 @@ router.post("/blog", function(req, res, next) {
 });
 
 router.put("/blog/:id", function(req, res, next) {
+  delete req.body._id;
   db.Blog.update({_id: new db.ObjectId(req.params.id)}, req.body, function(err, record) {
+    console.log(err);
     if (err) return res.status(409).json({error: err});
     console.log({blog: record});
     res.json({blog: record});

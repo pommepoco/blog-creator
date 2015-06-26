@@ -1,8 +1,8 @@
 <div>
-    <div class="col-lg-2" >
+    <div class="col-lg-2" ng-if="isAdmin()">
         <div id="home-content" class="bs-component">
             <div class="jumbotron">
-                <form ng-if="isAuth" class="add-post" ng-submit="addPost()">
+                <form ng-if="isAdmin()" class="add-post" ng-submit="addPost()">
                     <label>Titre
                         <input class="form-control" type="text" ng-model="newPost.title">
                     </label>
@@ -21,7 +21,7 @@
                     <h3>{{ article.title }}<span> écrit par {{ article.author.username }}</span></h3>
                     <p>{{ article.content }}</p>
                     <ul ng-repeat="comment in article.comments">
-                        <li>{{ comment.content }} <span>{{ comment.author.username }}</span></li>
+                        <li>{{ comment.content }} <br><span>{{ comment.author.username }}</span></li>
                     </ul>
                     <span ng-if="isAdmin()" ng-click="postDelete(article)">delete</span>
                     <form ng-submit="addComment(article)" >
