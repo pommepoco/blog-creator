@@ -42,12 +42,19 @@ p button {
 #suppr {
 	display: inline-block;
 	margin-left: 2em;
+	cursor: pointer;
 }
 .navbar-form input{
 	margin-right: 2em;
 }
+#content-blog, .col-lg-2 {
+	margin-left: 4em;
+}
 .col-lg-6 {
 	margin-left: 32em;
+}
+#content-blog, .col-lg-6{
+	margin-left: 7em;
 }
 .jumbotron {
 	text-align: center;	

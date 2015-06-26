@@ -1,17 +1,4 @@
 <div>
-    <div class="post" ng-repeat="(articleKey, article) in blog.articles | reverse">
-        <h3>{{ article.title }}</h3>
-        <p>{{ article.content }}</p>
-        <ul ng-repeat="comment in article.comments">
-            <li>{{ comment.content }} <span>{{ comment.author.username }}</span></li>
-        </ul>
-        <span ng-click="postDelete(article)">delete</span>
-        <form ng-submit="addComment(article)" >
-            <label>Ajouter un commentaire:
-                <input type="text" ng-model="article.newComment">
-            </label>
-        </form>
-    </div>
     <div class="col-lg-2">
         <div id="home-content" class="bs-component">
             <div class="jumbotron">
@@ -24,6 +11,25 @@
                     </label>
                     <button class="btn btn-primary" type="submit">Ajouter</button>
                 </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div id="home-content" class="bs-component">
+            <div class="jumbotron">
+                <div class="post" ng-repeat="(articleKey, article) in blog.articles | reverse">
+                    <h3>{{ article.title }}</h3>
+                    <p>{{ article.content }}</p>
+                    <ul ng-repeat="comment in article.comments">
+                        <li>{{ comment.content }} <span>{{ comment.author.username }}</span></li>
+                    </ul>
+                    <span ng-click="postDelete(article)">delete</span>
+                    <form ng-submit="addComment(article)" >
+                        <label>Ajouter un commentaire:
+                            <input type="text" ng-model="article.newComment">
+                        </label>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
