@@ -12,13 +12,13 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-lg-3">
+		<div class="col-lg-3" ng-if ="isAuth">
 			<div id="home-content" class="bs-component">
 				<div class="jumbotron">
 					<div id="user-blog">
 						<h2>Mes blogs</h2>
 						<ul ng-repeat="myBlog in getMyBlogs()">
-							<li><a href="{{ 'http://' + myBlog.subDomain + '.' + host }}">{{ myBlog.name }}</a><span ng-repeat="manager in blog.managers"> - {{ manager.username }} </span></li>
+							<li><a href="{{ 'http://' + myBlog.subDomain + '.' + host }}">{{ myBlog.name }}</a><span ng-repeat="manager in blog.managers"> - {{ manager.username }} </span><span  ng-click = "deleteBlog(myBlog._id)" id="suppr"><a href="#">Supprimer</a></span></li>
 						</ul>
 					</div >
 				</div>

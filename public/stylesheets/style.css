@@ -4,7 +4,21 @@ body {
   background-color: #222;
   color: white;
 }
-
+li {
+	text-decoration: none;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+ul {
+	margin-left:-3em;
+}
+ol, ul {
+	list-style: none;
+}
 form {
 	text-align: center;
 }
@@ -25,11 +39,18 @@ p {
 p button {
 	color:black;
 }
+#suppr {
+	display: inline-block;
+	margin-left: 2em;
+}
 .navbar-form input{
 	margin-right: 2em;
 }
 .col-lg-6 {
 	margin-left: 32em;
+}
+.jumbotron {
+	text-align: center;	
 }
 .jumbotron h2 {
 	margin: 0em auto 3em auto;
