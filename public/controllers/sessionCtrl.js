@@ -38,6 +38,8 @@ module.controller("sessionCtrl", [
         .success(function(data) {
           console.log(data);
           $rootScope.user = data.user === null ? {} : data.user;
+          $rootScope.user.id = $rootScope.user._id;
+          delete $rootScope.user._id;
           if ($location.path() === "/register")
             $location.path("/");
           $rootScope.isAuth = data.authentificated !== undefined ? data.authentificated : false;

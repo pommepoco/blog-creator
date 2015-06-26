@@ -1,11 +1,11 @@
 <div>
     <div class="post" ng-repeat="(articleKey, article) in blog.articles | reverse">
-        <h3>{{ article.title }}</h3>
+        <h3>{{ article.title }}<span> écrit par {{ article.author.username }}</span></h3>
         <p>{{ article.content }}</p>
         <ul ng-repeat="comment in article.comments">
             <li>{{ comment.content }} <span>{{ comment.author.username }}</span></li>
         </ul>
-        <span ng-click="postDelete(article)">delete</span>
+        <span ng-if="isAdmin()" ng-click="postDelete(article)">delete</span>
         <form ng-submit="addComment(article)" >
             <label>Ajouter un commentaire:
                 <input type="text" ng-model="article.newComment">
