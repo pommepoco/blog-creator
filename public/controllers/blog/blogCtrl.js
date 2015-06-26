@@ -24,11 +24,17 @@ module.controller("BlogCtrl", [
     // Commment CRUD
     $scope.addComment = function(article) {
       console.log(article);
-      article.comments = {
+      article.comments.push({
         content: article.newComment,
         author: $rootScope.user
-      };
+      });
       putBlog();
+    };
+
+    $rootScope.isAdmin = function() {
+      if (!$rootScope.user || !$rootScope.user._id ) return false;
+      console.log("isAdmin", _.find($rootScope.blog.managers, {id: $rootScope.user.id}), {id: $rootScope.user.id}, $rootScope.blog.managers)
+      return true;
     };
 
     $scope.deleteComment = function(article, comment) {
@@ -47,6 +53,7 @@ module.controller("BlogCtrl", [
     };
 
     $scope.addPost = function() {
+      $scope.newPost.author = $rootScope.user;
       $rootScope.blog.articles.push($scope.newPost);
       console.log($rootScope.blog);
       putBlog();

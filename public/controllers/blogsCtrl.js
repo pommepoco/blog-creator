@@ -57,15 +57,15 @@ module.controller("BlogsCtrl", [
         });
       };
 
-    // Remove blog
-    $scope.deleteBlog = function(blogId) {
-      $http.delete("/blog/" + blogId).success(function(data) {
-        console.log(data);
-        getBlog();
-      }).error(function(data) {
-        console.log(data);
-        alert("une erreur est survenu");
-      });
-    };
+      // Remove blog
+      $scope.deleteBlog = function(blogId) {
+        $http.delete("/blog/" + blogId).success(function(data) {
+          console.log(data);
+          getBlog();
+        }).error(function(data) {
+          console.log(data);
+          alert("une erreur est survenu");
+        });
+      };
     }
 ]);
