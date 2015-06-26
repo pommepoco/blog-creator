@@ -9,7 +9,7 @@ sudo npm install -g forever
 redis-server --daemonize yes
 mkdir -p data/db
 mongod mongod --fork --logpath ./mongodb.log --dbpath data/db
-npm install -g bower forever
+sudo npm install -g bower forever
 npm install
 bower install
 forever ./bin/www
