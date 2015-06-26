@@ -28,8 +28,8 @@ module.controller("sessionCtrl", [
     $scope.logout = function() {
       $http.delete("/session")
         .success(function(data) {
-          console.log("del session", data);
           $rootScope.isAuth = false;
+          $rootScope.getSession();
         });
     };
 
@@ -45,7 +45,7 @@ module.controller("sessionCtrl", [
         }).error(function() {
           alert("Une erreur est survenue");
         });
-    }
+    };
 
     // get the connected user
     $rootScope.getSession();

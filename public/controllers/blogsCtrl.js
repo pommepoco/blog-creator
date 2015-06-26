@@ -23,12 +23,18 @@ module.controller("BlogsCtrl", [
     $scope.getMyBlogs = function() {
       var myblogs = [];
       if (!$scope.blogs) return [];
-      $scope.blogs.forEach(function(element, index, array) {
-        if (element.managers)
-          element.managers.forEach(function(mElement, mIndex, mArray) {
-            if (mElement && mElement.username && mElement.username === $rootScope.user.username)
-              myblogs.push(element);
+      $scope.blogs.forEach(function(blog, index, array) {
+        if (_.isArray(blog.managers)) {
+          blog.managers.forEach(function (manager, mIndex, mArray) {
+            if (
+              _.isObject(manager)
+              && manager.username
+              && $rootScope.user
+              && $rootScope.user.username
+              && manager.username === $rootScope.user.username)
+              myblogs.push(blog);
           });
+        }
       });
       return myblogs;
     };
@@ -55,12 +61,7 @@ module.controller("BlogsCtrl", [
     $scope.deleteBlog = function(blogId) {
       $http.delete("/blog/" + blogId).success(function(data) {
         console.log(data);
-        $http.get("/blog")
-          .success(function(data) {
-            getBlog();
-          }).error(function() {
-            alert("une erreur est survenu");
-          });
+        getBlog();
       }).error(function(data) {
         console.log(data);
         alert("une erreur est survenu");
