@@ -20,7 +20,7 @@ router.get("/blog/current", function(req, res, next) {
 
 router.get("/blog", function(req, res, next) {
   db.Blog.find(req.body, function(err, records) {
-    if (err) return res.status(409).json({error: err});
+    if (err) return res.status(404).json({error: err});
     res.json({blogs: records});
   });
 });
