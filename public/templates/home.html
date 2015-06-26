@@ -6,7 +6,7 @@
 					<div  id="user-account">
 						<h2>Utilisateurs</h2>
 						<ul ng-repeat="user in users">
-							<li>{{ user.name }} - <span ng-if="user.authentificated">Connected</span></li>
+							<li>{{ user.username }} - <span ng-if="user.authentificated">Connected</span></li>
 						</ul>
 					</div>
 				</div>
@@ -18,7 +18,10 @@
 					<div id="user-blog">
 						<h2>Mes blogs</h2>
 						<ul ng-repeat="myBlog in getMyBlogs()">
-							<li><a href="{{ 'http://' + myBlog.subDomain + '.' + host }}">{{ myBlog.name }}</a><span ng-repeat="manager in blog.managers"> - {{ manager.username }} </span></li>
+							<li>
+								<a href="{{ 'http://' + myBlog.subDomain + '.' + host }}">{{ myBlog.name }}</a>
+								<span ng-repeat="manager in myBlog.managers">{{ " - " + manager.username !== user.username ? manager.username : ""}} </span>
+							</li>
 						</ul>
 					</div >
 				</div>
